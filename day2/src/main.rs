@@ -38,6 +38,16 @@ fn main() {
     for report in reports {
         if is_it_safe(&report) {
             safe_reports += 1;
+        }else{
+            for i in 0..report.len() {
+                let mut temp_report = report.clone();
+                temp_report.remove(i);
+
+                if is_it_safe(&temp_report) {
+                    safe_reports += 1;
+                    break;
+                }
+            }
         }
     }
 
